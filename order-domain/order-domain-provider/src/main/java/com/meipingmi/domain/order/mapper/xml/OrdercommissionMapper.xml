@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meipingmi.domain.order.mapper.OrdercommissionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.meipingmi.domain.order.entity.OrdercommissionDO">
+        <id column="id" property="id" />
+        <result column="ordernum" property="ordernum" />
+        <result column="orderprice" property="orderprice" />
+        <result column="userid" property="userid" />
+        <result column="businessid" property="businessid" />
+        <result column="realmoney" property="realmoney" />
+        <result column="surplus" property="surplus" />
+        <result column="charge" property="charge" />
+        <result column="platmoney" property="platmoney" />
+        <result column="goodssurplus" property="goodssurplus" />
+        <result column="money" property="money" />
+        <result column="moneytype" property="moneytype" />
+        <result column="returnmoney" property="returnmoney" />
+        <result column="couponbackmoney" property="couponbackmoney" />
+        <result column="buyersmoney" property="buyersmoney" />
+        <result column="busimoney" property="busimoney" />
+        <result column="create_time" property="createTime" />
+        <result column="delete_time" property="deleteTime" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="valid" property="valid" />
+        <result column="version" property="version" />
+        <result column="realnum" property="realnum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ordernum, orderprice, userid, businessid, realmoney, surplus, charge, platmoney, goodssurplus, money, moneytype, returnmoney, couponbackmoney, buyersmoney, busimoney, create_time, delete_time, modify_time, valid, version, realnum
+    </sql>
+
+</mapper>
