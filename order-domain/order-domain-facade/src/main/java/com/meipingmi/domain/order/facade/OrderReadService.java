@@ -1,6 +1,6 @@
 package com.meipingmi.domain.order.facade;
 
-import com.meipingmi.common.vo.WebResult;
+import com.meipingmi.domain.order.common.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface OrderReadService {
 
     @GetMapping(value = "/queryOrderInfo")
-    WebResult<String> queryOrderInfo(@RequestParam(name = "id") Long id);
+    Result<String> queryOrderInfo(@RequestParam(name = "id") Long id);
 
 }

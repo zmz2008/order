@@ -12,10 +12,6 @@
     <artifactId>order-domain-facade</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.meipingmi</groupId>
-            <artifactId>meipingmi-common</artifactId>
-            <version>5.3.1-RELEASE</version>
-        </dependency>
+
     </dependencies>
 </project>

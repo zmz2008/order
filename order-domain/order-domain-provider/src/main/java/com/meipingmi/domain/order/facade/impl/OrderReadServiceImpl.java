@@ -1,6 +1,5 @@
 package com.meipingmi.domain.order.facade.impl;
 
-import com.meipingmi.common.vo.WebResult;
 import com.meipingmi.domain.order.facade.OrderReadService;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderReadServiceImpl implements OrderReadService {
 
     @Override
-    public WebResult<String> queryOrderInfo(Long id) {
+    public Result<String> queryOrderInfo(Long id) {
 
-        return WebResult.buildSucc("查询成功") ;
+        return Result.;
     }
 }
