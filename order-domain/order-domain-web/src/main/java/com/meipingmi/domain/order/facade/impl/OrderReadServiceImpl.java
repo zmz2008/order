@@ -17,7 +17,6 @@ public class OrderReadServiceImpl implements OrderReadService
 
     @Override
     public Result<String> queryOrderInfo(Long id) {
-
         return Result.ok("查询订单信息成功","orderInfo");
     }
 }
