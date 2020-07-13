@@ -11,7 +11,7 @@
 	
     <modules>
         <module>order-domain-facade</module>
-        <module>order-domain-provider</module>
+        <module>order-domain-web</module>
     </modules>
 
     <parent>
