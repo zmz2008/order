@@ -25,7 +25,7 @@
         <result column="time" property="time" />
         <result column="userid" property="userid" />
         <result column="address_id" property="addressId" />
-        <result column="businessname" property="businessname" />
+        <result column="businessname" property="businessnameA" />
         <result column="originalprice" property="originalprice" />
         <result column="suporder_id" property="suporderId" />
         <result column="type" property="type" />
@@ -49,5 +49,11 @@
     <sql id="Base_Column_List">
         id, create_time, delete_time, modify_time, valid, version, autoconfirm, businessid, carriage, ip, memo, openid, ordernum, price, receivetime, sendtime, shopid, status, time, userid, address_id, businessname, originalprice, suporder_id, type, new_receive_time, order_version, busmemo, remark, delay_days, originalcarriage, payordernum, payprice, meal_id, appversion, plat_couponuser, plat_amount, busi_couponuser, busi_amount
     </sql>
+
+    <select id="selectByName2" resultType="com.meipingmi.domain.order.entity.OrdersDO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM orders where id = 3
+    </select>
 
 </mapper>

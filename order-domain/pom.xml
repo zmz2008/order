@@ -112,6 +112,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- 生产环境不设置，仅在dev，test，压测环境 性能打印及问题排查-->
         <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>

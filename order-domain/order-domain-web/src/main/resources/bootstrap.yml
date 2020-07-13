@@ -8,7 +8,14 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yml
-        group: dev
+        access-key: ${NACOS_AK:}
+        secret-key: ${NACOS_SK:}
+        group: ${NACOS_GROUP:dev}
+        prefix: "application"
+        # 应用私有配置
+        ext-config:
+          - group: ${NACOS_GROUP:dev}
+            dataId: xxx.yml
       discovery:
         server-addr: 127.0.0.1:8848
 
@@ -21,3 +28,6 @@ mybatis-plus:
       logic-delete-value: 1
       # 逻辑未删除值(默认为 0)
       logic-not-delete-value: 0
+  # 如果是放在src/main/java目录下 classpath:/com/*/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/**.xml
+  mapper-locations: classpath*:/com/meipingmi/domain/order/mapper/xml/*Mapper.xml

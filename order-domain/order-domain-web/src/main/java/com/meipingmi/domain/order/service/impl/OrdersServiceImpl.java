@@ -6,6 +6,8 @@ import com.meipingmi.domain.order.service.OrdersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -17,4 +19,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, OrdersDO> implements OrdersService {
 
+    @Override
+    public List<OrdersDO> selectByName(String name) {
+
+        return baseMapper.selectByName2(null);
+    }
 }

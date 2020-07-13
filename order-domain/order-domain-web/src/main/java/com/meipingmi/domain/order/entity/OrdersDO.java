@@ -1,10 +1,8 @@
 package com.meipingmi.domain.order.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -27,13 +25,14 @@ public class OrdersDO implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     private Date createTime;
 
     private Date deleteTime;
 
+    @TableField(fill = FieldFill.UPDATE)
     private Date modifyTime;
 
     private Boolean valid;
@@ -73,7 +72,9 @@ public class OrdersDO implements Serializable {
 
     private Long addressId;
 
-    private String businessname;
+    //private String businessname;
+    @TableField(value = "businessname")
+    private String businessnameA;
 
     private Double originalprice;
 
