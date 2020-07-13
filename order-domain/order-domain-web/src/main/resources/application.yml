@@ -6,8 +6,11 @@ spring:
     #jdbc:mysql://192.168.4.10:3306/app-dev-db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     #jdbc:p6spy:mysql://192.168.4.10:3306/app-dev-db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     url: jdbc:p6spy:mysql://192.168.4.10:3306/app-dev-db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-    username: mpm_test
-    password: mpm@t#
+    #aes的key为1caebcaba0574451,在启动参数增加--mpw.key=1caebcaba0574451
+    #mpm_test  mpw:rGdRaoRwWTD2QP3IwW5yjQ==
+    username: mpw:rGdRaoRwWTD2QP3IwW5yjQ==
+    #mpm@t#  mpw:xl8JN1B4aHvLZFmgksTsdA==
+    password: mpw:xl8JN1B4aHvLZFmgksTsdA==
     #com.p6spy.engine.spy.P6SpyDriver   com.mysql.cj.jdbc.Driver
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -25,6 +28,12 @@ spring:
       min-evictable-idle-time-millis: 30000
       filters: stat
       async-init: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 1
+
 
 # Logger Config
 logging:

@@ -1,5 +1,7 @@
 package com.meipingmi.domain.order.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
@@ -24,7 +26,7 @@ import lombok.EqualsAndHashCode;
 public class OrdersDO implements Serializable {
 
     private static final long serialVersionUID=1L;
-
+    //@JSONField(serializeUsing = ToStringSerializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 

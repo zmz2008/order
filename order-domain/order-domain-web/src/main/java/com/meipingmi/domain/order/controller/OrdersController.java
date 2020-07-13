@@ -7,6 +7,8 @@ import com.meipingmi.domain.order.common.Result;
 import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +30,13 @@ import java.util.List;
 public class OrdersController {
     @Autowired
     private OrdersService ordersService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @GetMapping("/queryOrdersAll/{pageNo}")
-    public Result< List<OrdersDO>> queryOrdersAll(@PathVariable(name="pageNo") Integer pageNo){
+    public Result<List<OrdersDO>> queryOrdersAll(@PathVariable(name="pageNo") Integer pageNo){
         Page<OrdersDO> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(5);
@@ -40,12 +46,16 @@ public class OrdersController {
     }
 
     @GetMapping("/queryOrder/{id}")
-    public Result< OrdersDO> queryOrder(@PathVariable(name = "id") Long id){
+    public Result<OrdersDO> queryOrder(@PathVariable(name = "id") Long id){
 
         OrdersDO ordersDO = ordersService.getById(id);
+        ordersDO.setId(Long.MAX_VALUE);
         //需要做对象转化，转化成dto或vo对象
+        stringRedisTemplate.opsForValue().set("k1",id+"");
+        redisTemplate.opsForValue().set("k2",id);
         return Result.ok(ordersDO);
     }
+
 
     @GetMapping("/queryOrdersByName")
     public Result< List<OrdersDO>> queryOrdersByName(){

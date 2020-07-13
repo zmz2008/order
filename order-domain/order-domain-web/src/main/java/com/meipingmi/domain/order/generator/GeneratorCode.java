@@ -33,6 +33,7 @@ public class GeneratorCode {
          gc.setFileOverride(false);
         // 去Service的I前缀
          gc.setServiceName("%sService");
+         //增加DO后缀
          gc.setEntityName("%sDO");
 
         gc.setIdType(IdType.ASSIGN_ID);
