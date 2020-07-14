@@ -40,6 +40,12 @@ logging:
   level:
     com.baomidou.mybatisplus.samples: debug
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 # 激活Sentinel对Feign的支持
 feign:
   sentinel:

@@ -2,6 +2,8 @@ package com.meipingmi.domain.order.controller;
 
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.meipingmi.domain.order.common.Result;
 import com.meipingmi.domain.order.entity.OrdersDO;
@@ -41,6 +43,7 @@ public class OrdersController {
     private String value;
 
     @GetMapping("/queryOrdersAll/{pageNo}")
+    @SentinelResource(value ="queryOrdersAll",blockHandler = "queryOrderBlockHandler")
     public Result<List<OrdersDO>> queryOrdersAll(@PathVariable(name="pageNo") Integer pageNo){
         Page<OrdersDO> page = new Page<>();
         page.setCurrent(pageNo);
@@ -51,8 +54,9 @@ public class OrdersController {
     }
 
     @GetMapping("/queryOrder/{id}")
+    @SentinelResource(value = "queryOrder",blockHandler = "queryOrderBlockHandler")
     public Result<OrdersDO> queryOrder(@PathVariable(name = "id") Long id){
-
+        Long i = 1/id;
         OrdersDO ordersDO = ordersService.getById(id);
         ordersDO.setId(Long.MAX_VALUE);
         //需要做对象转化，转化成dto或vo对象
@@ -72,6 +76,13 @@ public class OrdersController {
     public Result<String> config(){
 
         return Result.ok(value);
+    }
+
+    public Result<OrdersDO> queryOrderBlockHandler (Long p, BlockException exception)
+    {
+        OrdersDO ordersDO = new OrdersDO();
+        ordersDO.setBusinessnameA("无效的业务名称");
+        return Result.ok(ordersDO);
     }
 
 }
