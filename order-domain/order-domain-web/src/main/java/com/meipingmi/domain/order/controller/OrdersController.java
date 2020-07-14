@@ -1,12 +1,14 @@
 package com.meipingmi.domain.order.controller;
 
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.meipingmi.domain.order.common.Result;
 import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/order/orders-do")
+@RefreshScope
 public class OrdersController {
     @Autowired
     private OrdersService ordersService;
@@ -34,6 +37,8 @@ public class OrdersController {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Value("${mpm.name:}")
+    private String value;
 
     @GetMapping("/queryOrdersAll/{pageNo}")
     public Result<List<OrdersDO>> queryOrdersAll(@PathVariable(name="pageNo") Integer pageNo){
@@ -63,11 +68,11 @@ public class OrdersController {
         return Result.ok(list);
     }
 
-    @GetMapping("/queryOrders")
-    public Result<String> queryOrders(){
-        return Result.ok("123");
-    }
+    @GetMapping("/config")
+    public Result<String> config(){
 
+        return Result.ok(value);
+    }
 
 }
 

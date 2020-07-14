@@ -11,14 +11,32 @@ spring:
         access-key: ${NACOS_AK:}
         secret-key: ${NACOS_SK:}
         group: ${NACOS_GROUP:dev}
-        prefix: "application"
-        # 应用私有配置
+        prefix: "order-domain"
+        namespace: 'c629f5c4-f7ed-4c25-8314-2f295aa76151'
+        #加载多个配置文件
         ext-config:
           - group: ${NACOS_GROUP:dev}
-            dataId: xxx.yml
+            dataId: xxx1.yml
+          - group: ${NACOS_GROUP:dev}
+            dataId: xxx2.yml
       discovery:
+        group: ${NACOS_GROUP:dev}
         server-addr: 127.0.0.1:8848
-
+        namespace: 'c629f5c4-f7ed-4c25-8314-2f295aa76151'
+    sentinel:
+      transport:
+        #配置Sentinel dashboard地址
+        dashboard: 127.0.0.1:8080
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: sentinel-service
+            groupId: dev
+            data-type: json
+            rule-type: flow
+      
 mybatis-plus:
   global-config:
     db-config:
@@ -28,8 +46,8 @@ mybatis-plus:
       logic-delete-value: 1
       # 逻辑未删除值(默认为 0)
       logic-not-delete-value: 0
-    configuration:
-      cache-enabled: true
+  configuration:
+    cache-enabled: true
   # 如果是放在src/main/java目录下 classpath:/com/*/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/**.xml
   mapper-locations: classpath*:/com/meipingmi/domain/order/mapper/xml/*Mapper.xml

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.meipingmi.domain.order.mapper.OrdersMapper">
-
+    <!--
     <cache type="org.mybatis.caches.redis.RedisCache" />
-
+    -->
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.meipingmi.domain.order.entity.OrdersDO">
         <id column="id" property="id" />
@@ -52,10 +52,10 @@
         id, create_time, delete_time, modify_time, valid, version, autoconfirm, businessid, carriage, ip, memo, openid, ordernum, price, receivetime, sendtime, shopid, status, time, userid, address_id, businessname, originalprice, suporder_id, type, new_receive_time, order_version, busmemo, remark, delay_days, originalcarriage, payordernum, payprice, meal_id, appversion, plat_couponuser, plat_amount, busi_couponuser, busi_amount
     </sql>
 
-    <select id="selectByName2" resultType="com.meipingmi.domain.order.entity.OrdersDO">
+    <select id="selectByName2" resultType="com.meipingmi.domain.order.entity.OrdersDO" useCache="false">
         SELECT
         <include refid="Base_Column_List" />
-        FROM orders where id = 3
+        FROM orders where id = 4
     </select>
 
 </mapper>

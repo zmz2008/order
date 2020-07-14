@@ -1,8 +1,13 @@
 package com.meipingmi.domain.order.facade.impl;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.meipingmi.domain.order.common.Result;
+import com.meipingmi.domain.order.dto.OrderDTO;
+import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.facade.OrderReadService;
+import com.meipingmi.domain.order.service.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -14,9 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderReadServiceImpl implements OrderReadService
 {
+    @Autowired
+    private OrdersService ordersService;
 
     @Override
-    public Result<String> queryOrderInfo(Long id) {
-        return Result.ok("查询订单信息成功","orderInfo");
+    public Result<OrderDTO> queryOrderInfo(Long id) {
+        OrdersDO ordersDO = ordersService.getById(id);
+        OrderDTO orderDTO = new OrderDTO();
+        BeanUtil.copyProperties(ordersDO,orderDTO);
+        return Result.ok(orderDTO);
     }
 }
