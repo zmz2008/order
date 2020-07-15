@@ -6,6 +6,7 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 import java.util.Properties;
@@ -16,6 +17,7 @@ import java.util.Properties;
  * @Date : 2020/7/14-20:59
  */
 @Component
+@RefreshScope
 public class NacosWritableDataSource<T> implements WritableDataSource<T> {
 
     @Value("${spring.cloud.sentinel.datasource.ds1.nacos.server-addr}")

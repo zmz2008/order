@@ -40,6 +40,7 @@ logging:
   level:
     com.baomidou.mybatisplus.samples: debug
 
+#Endpoint 支持
 management:
   endpoints:
     web:

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class OrdersController {
     private String value;
 
     @GetMapping("/queryOrdersAll/{pageNo}")
-    @SentinelResource(value ="queryOrdersAll",blockHandler = "queryOrderBlockHandler")
+    @SentinelResource(value ="queryOrdersAll",blockHandler = "queryOrdersAllBlockHandler")
     public Result<List<OrdersDO>> queryOrdersAll(@PathVariable(name="pageNo") Integer pageNo){
         Page<OrdersDO> page = new Page<>();
         page.setCurrent(pageNo);
@@ -80,9 +81,13 @@ public class OrdersController {
 
     public Result<OrdersDO> queryOrderBlockHandler (Long p, BlockException exception)
     {
-        OrdersDO ordersDO = new OrdersDO();
-        ordersDO.setBusinessnameA("无效的业务名称");
-        return Result.ok(ordersDO);
+        return Result.ok(null);
+    }
+
+    public Result<List<OrdersDO>> queryOrdersAllBlockHandler (Integer p, BlockException exception)
+    {
+
+        return Result.ok(new ArrayList<>());
     }
 
 }
