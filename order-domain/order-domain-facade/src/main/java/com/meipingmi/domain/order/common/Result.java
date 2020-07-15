@@ -3,6 +3,13 @@ package com.meipingmi.domain.order.common;
 import lombok.Data;
 
 import java.io.Serializable;
+/**
+ * @Author : wuzhifei
+ * @Description : 该对象会在公共的jar包提供
+ * @Date : 2020/7/15-16:09
+ * @Param :
+ * @return :
+ **/
 @Data
 public class Result<T> implements Serializable {
     private static final long serialVersionUID = -4411108418398147363L;
