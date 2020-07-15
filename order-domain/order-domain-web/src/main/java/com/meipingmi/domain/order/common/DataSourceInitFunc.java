@@ -42,14 +42,6 @@ public class DataSourceInitFunc implements InitFunc{
     @PostConstruct
     @Override
     public void init() throws Exception {
-//        final String remoteAddress = "localhost";
-//        final String groupId = "Sentinel:Demo";
-//        final String dataId = "com.alibaba.csp.sentinel.demo.flow.rule";
-//
-//        ReadableDataSource<String, List<FlowRule>> flowRuleDataSource = new NacosDataSource<>(remoteAddress, groupId, dataId,
-//                source -> JSON.parseObject(source, new TypeReference<List<FlowRule>>() {}));
-//        FlowRuleManager.register2Property(flowRuleDataSource.getProperty());
-
 
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.SERVER_ADDR, remoteAddress);

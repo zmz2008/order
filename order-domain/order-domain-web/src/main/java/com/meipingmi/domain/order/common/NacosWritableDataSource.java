@@ -27,7 +27,6 @@ public class NacosWritableDataSource<T> implements WritableDataSource<T> {
     @Value("${spring.cloud.sentinel.datasource.ds1.nacos.dataId}")
     private String dataId;
 
-
     @Override
     public void write(T o) throws Exception {
         String jsonConfigInfo = encodeJson(o);
@@ -35,8 +34,7 @@ public class NacosWritableDataSource<T> implements WritableDataSource<T> {
         properties.put(PropertyKeyConst.SERVER_ADDR, remoteAddress);
         properties.put(PropertyKeyConst.NAMESPACE, namespace);
         ConfigService configService = NacosFactory.createConfigService(properties);
-        boolean isPublishOk = configService.publishConfig(dataId, groupId, jsonConfigInfo);
-        System.out.println(isPublishOk);
+        configService.publishConfig(dataId, groupId, jsonConfigInfo);
     }
 
     private <T> String encodeJson(T t) {
