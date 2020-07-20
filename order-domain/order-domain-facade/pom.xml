@@ -12,6 +12,10 @@
     <artifactId>order-domain-facade</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.meipingmi.common</groupId>
+            <artifactId>std-io</artifactId>
+            <version>${std-io.version}</version>
+        </dependency>
     </dependencies>
 </project>

@@ -2,7 +2,6 @@ package com.meipingmi.domain.order.facade.impl;
 
 
 import cn.hutool.core.bean.BeanUtil;
-import com.meipingmi.domain.order.common.Result;
 import com.meipingmi.domain.order.dto.OrderDTO;
 import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.facade.OrderReadService;
