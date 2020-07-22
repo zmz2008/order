@@ -5,7 +5,7 @@ package com.meipingmi.domain.order.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.meipingmi.domain.order.common.Result;
+import com.meipingmi.common.std.io.Result;
 import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;

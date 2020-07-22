@@ -54,6 +54,11 @@
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.meipingmi.yeb</groupId>
+            <artifactId>oneid-domain-facade</artifactId>
+            <version>${oneid.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
