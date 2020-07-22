@@ -12,7 +12,7 @@ spring:
         secret-key: ${nacos_sk:}
         group: ${nacos_group:dev}
         prefix: "order-domain"
-        namespace: 'c629f5c4-f7ed-4c25-8314-2f295aa76151'
+        namespace: '0b7f5dff-5dc2-4635-923f-f81b11c93264'
       
 mybatis-plus:
   global-config:

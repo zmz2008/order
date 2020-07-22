@@ -8,6 +8,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.meipingmi.common.std.io.Result;
 import com.meipingmi.domain.order.entity.OrdersDO;
 import com.meipingmi.domain.order.service.OrdersService;
+import com.meipingmi.yeb.common.enums.ErrorCodeEnum;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -42,6 +46,8 @@ public class OrdersController {
     private RedisTemplate redisTemplate;
     @Value("${mpm.name:}")
     private String value;
+    @Autowired
+    private RedissonClient redissonClient;
 
     @GetMapping("/queryOrdersAll/{pageNo}")
     @SentinelResource(value ="queryOrdersAll",blockHandler = "queryOrdersAllBlockHandler")
@@ -75,8 +81,20 @@ public class OrdersController {
 
     @GetMapping("/config")
     public Result<String> config(){
+        String key ="lock_1";
+        RLock rLock = redissonClient.getLock(key);
+        try{
 
-        return Result.ok(value);
+            //加锁
+            rLock.lock();
+
+            return Result.ok(value);
+        }catch (Exception e){
+            return Result.fail(ErrorCodeEnum.SYSTEM_ERROR_B0001.getCode());
+        }finally {
+            rLock.unlock();
+        }
+
     }
 
     public Result<OrdersDO> queryOrderBlockHandler (Long p, BlockException exception)

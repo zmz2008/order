@@ -59,6 +59,23 @@
             <artifactId>oneid-domain-facade</artifactId>
             <version>${oneid.version}</version>
         </dependency>
+        <!-- redisson -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.13.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-data-22</artifactId>
+            <version>3.13.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.meipingmi.yeb</groupId>
+            <artifactId>commons</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

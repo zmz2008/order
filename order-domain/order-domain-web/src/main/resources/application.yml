@@ -29,9 +29,8 @@ spring:
       filters: stat
       async-init: true
   redis:
-    host: 127.0.0.1
+    host: 192.168.4.163
     port: 6379
-    password:
     database: 1
 
 
